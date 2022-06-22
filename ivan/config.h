@@ -1,0 +1,10 @@
+/* Change USB Polling Rate to 1000hz and a larger keys per scan for less latency*/
+#define USB_POLLING_INTERVAL_MS 1
+#define RGB_MATRIX_ENABLE 1
+#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 0 // RANGE IS 0-255
+#define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+
+#ifdef RGB_MATRIX_ENABLE
+    #define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_SOLID_COLOR
+    #define RGB_DISABLE_WHEN_USB_SUSPENDED true
+#endif
