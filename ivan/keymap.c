@@ -113,9 +113,11 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     // Future block - RGB intensity here with ALT modify
     }else if (keyboard_report->mods & MOD_BIT(KC_LALT)){
         if (clockwise){
-            //rgb_matrix_decrease_val;
+            // rgblight_increase_hue_noeeprom();
+            rgb_matrix_set_suspend_state(false);
         }else{
-            //rgb_matrix_decrease_val;
+            // rgblight_decrease_hue_noeeprom();
+            rgb_matrix_set_suspend_state(true);
         }
 
     // No keys being held down, do REDO/UNDO 
@@ -133,33 +135,33 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 
 #ifdef RGB_MATRIX_ENABLE
     void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max){
-        // for(int i = 0; i<sizeof(LED_LIST_FUNCROW); i++){
-        //     rgb_matrix_set_color(LED_LIST_FUNCROW[i], RGB_AZURE);
-        // }
-        // for(int i = 0; i<sizeof(LED_LIST_NUMROW); i++){
-        //     rgb_matrix_set_color(LED_LIST_NUMROW[i], RGB_AZURE);
-        // }
-        // for(int i = 0; i<sizeof(LED_LIST_ARROWS); i++){
-        //     rgb_matrix_set_color(LED_LIST_ARROWS[i], RGB_AZURE);
-        // }
+        for(int i = 0; i<sizeof(LED_LIST_FUNCROW); i++){
+            rgb_matrix_set_color(LED_LIST_FUNCROW[i], RGB_DARKRED);
+        }
+        for(int i = 0; i<sizeof(LED_LIST_NUMROW); i++){
+            rgb_matrix_set_color(LED_LIST_NUMROW[i], RGB_DARKRED);
+        }
+        for(int i = 0; i<sizeof(LED_LIST_ARROWS); i++){
+            rgb_matrix_set_color(LED_LIST_ARROWS[i], RGB_DARKRED);
+        }
         for(int i = 0; i<sizeof(LED_SIDE_LEFT); i++){
             rgb_matrix_set_color(LED_SIDE_LEFT[i], RGB_MAGENTA);
         }
         for(int i = 0; i<sizeof(LED_SIDE_RIGHT); i++){
             rgb_matrix_set_color(LED_SIDE_RIGHT[i], RGB_MAGENTA);
         }
-        // for(int i = 0; i<sizeof(LED_LIST_FUNCCOLUMN); i++){
-        //     rgb_matrix_set_color(LED_LIST_FUNCCOLUMN[i], RGB_AZURE);
-        // }
-        // for(int i = 0; i<sizeof(LED_LIST_ALPHABET); i++){
-        //     rgb_matrix_set_color(LED_LIST_ALPHABET[i], RGB_AZURE);
-        // }
-        // for(int i = 0; i<sizeof(LED_LIST_BOTTOMROW); i++){
-        //     rgb_matrix_set_color(LED_LIST_BOTTOMROW[i], RGB_AZURE);
-        // }
-        // for(int i = 0; i<sizeof(LED_STRAYS); i++){
-        //     rgb_matrix_set_color(LED_STRAYS[i], RGB_AZURE);
-        // }
+        for(int i = 0; i<sizeof(LED_LIST_FUNCCOLUMN); i++){
+            rgb_matrix_set_color(LED_LIST_FUNCCOLUMN[i], RGB_DARKRED);
+        }
+        for(int i = 0; i<sizeof(LED_LIST_ALPHABET); i++){
+            rgb_matrix_set_color(LED_LIST_ALPHABET[i], RGB_DARKRED);
+        }
+        for(int i = 0; i<sizeof(LED_LIST_BOTTOMROW); i++){
+            rgb_matrix_set_color(LED_LIST_BOTTOMROW[i], RGB_DARKRED);
+        }
+        for(int i = 0; i<sizeof(LED_STRAYS); i++){
+            rgb_matrix_set_color(LED_STRAYS[i], RGB_DARKRED);
+        }
 
         if (IS_HOST_LED_ON(USB_LED_CAPS_LOCK)){
             rgb_matrix_set_color(LED_CAPS, RGB_MAGENTA);
